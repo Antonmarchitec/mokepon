@@ -9,6 +9,13 @@ let vidasEnemigo = 3
 
 //DECLARAR LA FUUNCION INICIAR JUEGO 
 const iniciarJuego = () =>{
+    let sectionSeleccionarAtaque = document.getElementById("seleccionar_ataque")
+    sectionSeleccionarAtaque.style.display = "none"
+
+    let sectionSeleccionarReiniciar = document.getElementById("sectReiniciar")
+    sectionSeleccionarReiniciar.style.display = "none"
+
+
     let botonMascotaJugar = document.getElementById("boton_mascota")
     botonMascotaJugar.addEventListener("click",seleccionarMascotaJugador)
 
@@ -26,6 +33,13 @@ const iniciarJuego = () =>{
 }
 
 const seleccionarMascotaJugador = () =>{
+    let sectionSeleccionarAtaque = document.getElementById("seleccionar_ataque")
+    sectionSeleccionarAtaque.style.display = "block"
+
+    let sectionSeleccionarMascota = document.getElementById("seleccionar_mascota")
+    sectionSeleccionarMascota.style.display = "none"
+
+
      //CAPTURANDO LOS ID
     let mascota_jugador = document.getElementById("mascota_jugador")
     let inputRadio1 = document.querySelector("#hipodoge")
@@ -71,6 +85,7 @@ const ataqueFuego = () =>{
      ataqueJuagdor = "FUEGO"
      //alert(`ATACASTE CON ${ataqueJuagdor}`)
      ataqueAleatorioEnemigo()
+     
 }
 
 const ataqueAgua = () =>{
@@ -166,6 +181,9 @@ const crearMensajeFinal = (resultadoFinal) =>{
 
     let botonTierra = document.getElementById("boton_tierra")
     botonTierra.disabled = true
+
+    let sectionSeleccionarReiniciar = document.getElementById("sectReiniciar")
+     sectionSeleccionarReiniciar.style.display = "block"
 }
 
 
