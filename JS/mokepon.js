@@ -94,8 +94,20 @@ const ataqueAleatorioEnemigo = () =>{
     }else if(ataqueAleatorio == 3){
         ataqueEnemigo = "TIERRA"
         //alert(`TU ENEMIGO ATACO CON  ${ataqueEnemigo}`)
-
     }
+
+
+    crearMensaje()
+}
+
+
+const crearMensaje = () =>{
+    let secionMensajes = document.getElementById("mensajes")
+    let elementParrafo = document.createElement("p")
+    elementParrafo.textContent = `TY ATACASTE CON: ${ataqueJuagdor} 
+    Y TU ENEMIGO CON: ${ataqueEnemigo}`
+
+    secionMensajes.appendChild(elementParrafo)
 }
 
 
