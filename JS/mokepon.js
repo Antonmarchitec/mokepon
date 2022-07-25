@@ -3,6 +3,10 @@ let ataqueJuagdor
 let ataqueEnemigo  
 
 
+let vidasJuagdor = 3 
+let vidasEnemigo = 3
+
+
 //DECLARAR LA FUUNCION INICIAR JUEGO 
 const iniciarJuego = () =>{
     let botonMascotaJugar = document.getElementById("boton_mascota")
@@ -14,11 +18,11 @@ const iniciarJuego = () =>{
     let botonAgua = document.getElementById("boton_agua")
     botonAgua.addEventListener("click" , ataqueAgua)
 
-
     let botonTierra = document.getElementById("boton_tierra")
     botonTierra.addEventListener("click" , ataqueTierra)
 
-    //crear la funcion ataque enemigo
+    let reiniciar = document.getElementById("reiniciar")
+    reiniciar.addEventListener("click", reiniciarJuego)
 }
 
 const seleccionarMascotaJugador = () =>{
@@ -101,17 +105,40 @@ const ataqueAleatorioEnemigo = () =>{
 }
 
 const combate = () =>{
+
+    let span_vidas_jugador = document.getElementById("vidas_jugador")
+    let span_vidas_enemigo = document.getElementById("vidas_enemigo")
+
+
     if(ataqueEnemigo == ataqueJuagdor){
-        crearMensaje("EMPATE")
+        crearMensaje("EMPATE")   
     }else if(ataqueJuagdor == "FUEGO" && ataqueEnemigo == "TIERRA"){
         crearMensaje("GANASTE")
+        vidasEnemigo-- 
+        span_vidas_enemigo.textContent = vidasEnemigo
     }else if(ataqueJuagdor == "AGUA" && ataqueEnemigo == "FUEGO"){
         crearMensaje("GANASTE")
+        vidasEnemigo-- 
+        span_vidas_enemigo.textContent = vidasEnemigo
     }else if(ataqueJuagdor == "TIERRA" && ataqueEnemigo == "AGUA"){
         crearMensaje("GANASTE")
+        vidasEnemigo-- 
+        span_vidas_enemigo.textContent = vidasEnemigo
     }else{
         crearMensaje("PERDISTE")
+        vidasJuagdor--
+        span_vidas_jugador.textContent = vidasJuagdor
     }
+
+    revisarVidas()
+}
+
+const revisarVidas = () =>{
+    if(vidasEnemigo == 0){
+        crearMensajeFinal("FELICITACIONES! ganaste :)")
+    }else if(vidasJuagdor == 0)[
+        crearMensajeFinal("Lo siento, perdiste :(")
+    ]  
 }
 
 
@@ -125,6 +152,26 @@ const crearMensaje = (resultado) =>{
 }
 
 
+const crearMensajeFinal = (resultadoFinal) =>{
+    let secionMensajes = document.getElementById("mensajes")
+    let elementParrafo = document.createElement("p")
+    elementParrafo.textContent = resultadoFinal
+    secionMensajes.appendChild(elementParrafo)
+
+    let botonFuego = document.getElementById("boton_fuego")
+    botonFuego.disabled = true
+    
+    let botonAgua = document.getElementById("boton_agua")
+    botonAgua.disabled = true
+
+    let botonTierra = document.getElementById("boton_tierra")
+    botonTierra.disabled = true
+}
+
+
+const reiniciarJuego = () =>{
+    location.reload()
+}
 //SE CARGARA LA FUNCION EN CUANTO TERMINE DE CARGAR TODA LA PAGINA
 window.addEventListener("load", iniciarJuego)
 
