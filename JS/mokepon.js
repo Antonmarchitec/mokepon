@@ -97,15 +97,29 @@ const ataqueAleatorioEnemigo = () =>{
     }
 
 
-    crearMensaje()
+    combate()
+}
+
+const combate = () =>{
+    if(ataqueEnemigo == ataqueJuagdor){
+        crearMensaje("EMPATE")
+    }else if(ataqueJuagdor == "FUEGO" && ataqueEnemigo == "TIERRA"){
+        crearMensaje("GANASTE")
+    }else if(ataqueJuagdor == "AGUA" && ataqueEnemigo == "FUEGO"){
+        crearMensaje("GANASTE")
+    }else if(ataqueJuagdor == "TIERRA" && ataqueEnemigo == "AGUA"){
+        crearMensaje("GANASTE")
+    }else{
+        crearMensaje("PERDISTE")
+    }
 }
 
 
-const crearMensaje = () =>{
+const crearMensaje = (resultado) =>{
     let secionMensajes = document.getElementById("mensajes")
     let elementParrafo = document.createElement("p")
-    elementParrafo.textContent = `TY ATACASTE CON: ${ataqueJuagdor} 
-    Y TU ENEMIGO CON: ${ataqueEnemigo}`
+    elementParrafo.textContent = `TU ATACASTE CON: ${ataqueJuagdor} 
+    Y TU ENEMIGO CON: ${ataqueEnemigo}, EL RESULTADO : ${resultado}`
 
     secionMensajes.appendChild(elementParrafo)
 }
