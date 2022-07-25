@@ -1,9 +1,24 @@
+//DECLARAMOS UNA VARIALBLES GLOBAL
+let ataqueJuagdor 
+let ataqueEnemigo  
+
+
 //DECLARAR LA FUUNCION INICIAR JUEGO 
 const iniciarJuego = () =>{
     let botonMascotaJugar = document.getElementById("boton_mascota")
-    botonMascotaJugar.addEventListener("click",()=>{
-        seleccionarMascotaJugador()
-    })
+    botonMascotaJugar.addEventListener("click",seleccionarMascotaJugador)
+
+    let botonFuego = document.getElementById("boton_fuego")
+    botonFuego.addEventListener("click" , ataqueFuego)
+    
+    let botonAgua = document.getElementById("boton_agua")
+    botonAgua.addEventListener("click" , ataqueAgua)
+
+
+    let botonTierra = document.getElementById("boton_tierra")
+    botonTierra.addEventListener("click" , ataqueTierra)
+
+    //crear la funcion ataque enemigo
 }
 
 const seleccionarMascotaJugador = () =>{
@@ -30,22 +45,57 @@ const seleccionarMascotaJugador = () =>{
 }
 
 const seleccionarMascotaEnemigo = () =>{
-    let ataqueEnemigo = numeroAleatorio(1,3)
+    let mascotaAleatoria = numeroAleatorio(1,3)
     let mascota_enemigo = document.querySelector("#mascota_enemigo")
     // 1 hipodoge
     // 2 capipepo
     // ratigueya
-    if(ataqueEnemigo == 1){
+    if(mascotaAleatoria == 1){
         mascota_enemigo.textContent = "hipodoge"
-    }else if(ataqueEnemigo == 2){
+    }else if(mascotaAleatoria == 2){
         mascota_enemigo.textContent = "capipepo"
-    }else if(ataqueEnemigo == 3){
+    }else if(mascotaAleatoria == 3){
         mascota_enemigo.textContent = "ratigueya"
     }
 }
 
 const numeroAleatorio = (min, max) =>{
     return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+const ataqueFuego = () =>{
+     ataqueJuagdor = "FUEGO"
+     //alert(`ATACASTE CON ${ataqueJuagdor}`)
+     ataqueAleatorioEnemigo()
+}
+
+const ataqueAgua = () =>{
+    ataqueJuagdor = "AGUA"
+    //alert(`ATACASTE CON ${ataqueJuagdor}`)
+    ataqueAleatorioEnemigo()
+}
+
+const ataqueTierra = () =>{
+    ataqueJuagdor = "TIERRA"
+    //alert(`ATACASTE CON ${ataqueJuagdor}`)
+    ataqueAleatorioEnemigo()
+}
+
+const ataqueAleatorioEnemigo = () =>{
+    let ataqueAleatorio = numeroAleatorio(1,3)
+    
+    if(ataqueAleatorio == 1){
+        ataqueEnemigo = "FUEGO"
+        //alert(`TU ENEMIGO ATACO CON  ${ataqueEnemigo}`)
+    }else if(ataqueAleatorio == 2){
+        ataqueEnemigo = "AGUA"
+        //alert(`TU ENEMIGO ATACO CON  ${ataqueEnemigo}`)
+
+    }else if(ataqueAleatorio == 3){
+        ataqueEnemigo = "TIERRA"
+        //alert(`TU ENEMIGO ATACO CON  ${ataqueEnemigo}`)
+
+    }
 }
 
 
